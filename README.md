@@ -1,7 +1,7 @@
-## Stomble_Fullstack_Project
+# Stomble_Fullstack_Project
 
 
-# Requirement:
+## Requirement:
 1. Code the frontend in the react framework.
 2. Use Material UI.
 3. Use Python for the backend.
@@ -12,7 +12,7 @@
 8. Upload to AWS.
 
 
-# Overview:
+## Overview:
 Purpose: The web application and public API can view details of disease outbreak reports which are extracted and analyzed from multiple news articles.
 
 Implementataion: There are three phases of this project, backend web-crawling & cloud MongoDb, GraphQL API and Front-end web application.
