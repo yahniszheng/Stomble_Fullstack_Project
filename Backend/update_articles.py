@@ -15,8 +15,8 @@ def update_post(posts, PS):
   new_posts = []
   for post in posts:
     # Add only new founded posts, Can be turned off if initialise database
-    # if int(post['datestamp']) > last_timestamp:
-    new_posts.append(post)
+    if int(post['datestamp']) > last_timestamp:
+      new_posts.append(post)
   
   if len(new_posts) >= 1:
     new_data = {
