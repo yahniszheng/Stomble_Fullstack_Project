@@ -17,4 +17,12 @@ Purpose: The web application and public API can view details of disease outbreak
 
 Implementataion: There are three phases of this project, backend web-crawling & cloud MongoDb, GraphQL API and Front-end web application.
 
-Workflow: In backend web-crawling & cloud MongoDb phase, Scrappy will do web crawling for multiple news websites to gather contents of disease outbreak news. These outbreak contents will go though Natural Language Processer to generate Outbreak Reports. The Reports will be upload to MongoDb. In GraphQL API phase, GraphQL API will take queries and fetch related data from MongoDb. In Front-end phase, Web application will fetch data from API and use react framework, material UI to represent them in a intuitive way.
+Workflow: 
+    In backend web-crawling & cloud MongoDb phase, Scrappy (Python library) will do web crawling for multiple news websites to gather contents of disease outbreak news. These outbreak contents will go though Natural Language Processer in the aid of Spacy(Python library) to generate Outbreak Reports. The Reports will be upload to MongoDb. 
+    In GraphQL API phase, GraphQL API will take queries and fetch related data from MongoDb.
+    In Front-end phase, Web application will fetch data from API and use react framework, material UI to represent them in a intuitive way.
+    
+## Progess:
+Backend phase is gernerally done. 
+GraphQL API is still implementing.
+Front-end react framework & basic template done.
