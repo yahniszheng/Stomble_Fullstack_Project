@@ -23,6 +23,6 @@ Workflow:
     In Front-end phase, Web application will fetch data from API and use react framework, material UI to represent them in a intuitive way.
     
 ## Progess:
-Backend phase is gernerally done. 
+Backend phase is gernerally done. MongoDb is hosted on Atlas cloud platform.
 GraphQL API is still implementing.
 Front-end react framework & basic template done.
