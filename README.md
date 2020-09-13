@@ -24,5 +24,5 @@ Workflow:
     
 ## Progess:
 Backend phase is gernerally done. MongoDb is hosted on Atlas cloud platform.
-GraphQL API is still implementing.
+GraphQL API is mostly done, working on some extensions.
 Front-end react framework & basic template done.
