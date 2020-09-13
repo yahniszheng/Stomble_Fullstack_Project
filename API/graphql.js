@@ -4,7 +4,7 @@ const { ApolloServer, gql } = require('apollo-server-lambda');
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
   type Query {
-    data: Article
+    data (location_filter : String, start_data : Int, end_date : Int, keyword : String): [Article]
   }
 
   type Article {
@@ -16,37 +16,67 @@ const typeDefs = gql`
     reports: [Report]
     keyword_location:[String]
     keyword_list:[String]
+    keyword_frequency:[Word_Frequency]
   }
 
   type Report {
       event_date: String
-      locations: Location
-      diseases: String
-      syndromes: String
+      locations: [Location]
+      diseases: [String]
+      syndromes: [String]
+  }
+
+  type Location {
+    google_id: String
+    address: String
+  }
+
+  type Word_Frequency {
+    name: String
+    freqency: Float
   }
 `;
 
-// const uri = "mongodb+srv://Yahnis_Password:999999qwas13579@yahnis.c1lhp.mongodb.net/stomble?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// // client.connect(err => {
-// //   const collection = client.db("stomble").collection("diseases");
-// //   // perform actions on the collection object
-// //   client.close();
-// // });
 
 let db
-// Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
     data: (parent, args, context, info) => {
-      return context.db.findOne().then(data => data);
+      if (!args.location_filter && !args.start_data && !args.end_date && !args.keyword) {
+        return context.db.find().limit(10).toArray();
+      }
+      let obj = {}
+      obj['$and'] = [];
+      if (args.location_filter) {
+        obj['$and'].push({'keyword_location': args.location_filter});
+      }
+      if (args.keyword) {
+        obj['$and'].push({'keyword_list': args.keyword});
+      }
+      if (args.start_data && args.end_date) {
+        obj['$and'].push({'date_of_publication': { '$gte' : parseInt(args.start_data)}});
+        obj['$and'].push({'date_of_publication': { '$lte' : parseInt(args.end_date)}});
+      }
+      return context.db.find(obj).limit(20).toArray();
     }
   },
   Article : {
     reports: (parent, args, context, info) => {
-      return context.db.findOne({'headline': parent.headline}).then(data => data.reports);
+      return parent.reports;
+    },
+    keyword_frequency: (parent, args, context, info) => {
+      temp = [];
+      for (let k in parent.keyword_frequency){
+        temp.push({'name': k, 'freqency': parent.keyword_frequency[k]});
+      }
+      return temp;
     }
   },
+  Report : {
+    locations: (parent, args, context, info) => {
+      return parent.locations;
+    }
+  }
 };
 
 const server = new ApolloServer({
