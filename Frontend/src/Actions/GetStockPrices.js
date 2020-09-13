@@ -1,6 +1,6 @@
 export default function getStockPrices(codes = [], callback = data => data, options = {}) {
   return Promise.all(codes.map(code => {
-    let url = `https://financialmodelingprep.com/api/v3/historical-price-full/index/${code}?serietype=line`;
+    let url = `https://financialmodelingprep.com/api/v3/historical-price-full/AAPL/?serietype=line&apikey=d582198f17cd2561d4c0c379847f136d`;
     if (options.from) {
       url = `${url}&from=${options.from}`
     }
@@ -10,7 +10,7 @@ export default function getStockPrices(codes = [], callback = data => data, opti
 
     return fetch(url)
       .then(resp => {
-        return resp.json()
+        return resp.json().then(a => {console.log(a);return a;})
       })
       .then(json => callback(json.historical.reverse().map((stockData) => {
         const result = { "date": stockData.date }

@@ -34,8 +34,6 @@ export default class AlertsSingleCountry extends React.Component {
             country : this.props.country,
             display_total : true,
             loading: true,
-            second_country : "", // reserved for comparasion
-            diseases_second : [], // reserved for comparasion
             colours : ["blue", "red", "green", "purple", "yellow", "ltblue", "pink", "orange"],
             marker_group : [],
             state_id: 0,

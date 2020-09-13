@@ -81,7 +81,6 @@ export default class AlertSearchBar extends React.Component {
     this.props.onSubmit(this.state);
   }
 
-  // User should able to use checkbox to represent start date and end date, or enter start date end date themselves.
   render() {
     return (
       <Box m={4}>

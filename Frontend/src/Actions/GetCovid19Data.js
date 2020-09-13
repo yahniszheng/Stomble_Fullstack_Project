@@ -1,5 +1,4 @@
 export default function GetCovid19Data(callback = () => { }, options = {}) {
-  // TODO: Hard-coded data
   const data = [
     {
       "date": "2020-01-22",

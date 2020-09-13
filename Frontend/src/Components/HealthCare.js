@@ -4,7 +4,7 @@ import GridContainer from "./Style/GridContainer.js";
 import Card from "./Style/Card.js";
 import CardHeader from "./Style/CardHeader.js";
 import CardBody from "./Style/CardBody.js";
-import { CardActionArea, CardContent, Typography, CardActions, Button } from "@material-ui/core"
+import { CardActionArea, CardContent, Typography, Grid } from "@material-ui/core"
 import CardAvatar from "./Style/CardAvatar.js";
 import hand from "./Hands.jpg";
 import ReactLoading from 'react-loading';
@@ -20,7 +20,7 @@ class HealthCare extends Component {
   }
 
   componentDidMount = () => {
-    var url = 'http://newsapi.org/v2/everything?' +
+    var url = 'https://newsapi.org/v2/everything?' +
       'q=healthcare&' +
       'pageSize=15&' +
       'apiKey=cd9567c0810a4be09ec8558e5733d54c';
@@ -58,9 +58,11 @@ class HealthCare extends Component {
       
     }else{
       data = (
-        <div className="">
-          <ReactLoading type="spin" color="#34c0eb" height={100} width={100} />
-        </div>
+        <Box mt={1}>
+            <Grid container justify="center" alignItems="center" >
+              <ReactLoading type="spin" color="#34c0eb" height={100} width={100} />
+            </Grid>
+        </Box>
       );
     }
     return (

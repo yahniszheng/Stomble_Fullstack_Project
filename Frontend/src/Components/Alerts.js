@@ -74,31 +74,6 @@ export default class Alerts extends Component {
     });
   }
 
-  componentDidMount = () => {
-    console.log("Mounted")
-    // TO DO
-    // Currently this is calling from google news api for category
-    //health, waiting to change to other api if needed
-    var url = 'http://newsapi.org/v2/everything?' +
-      'q=outbreak&' +
-      'sortBy=popularity&' +
-      'pageSize=5&' +
-      'apiKey=cd9567c0810a4be09ec8558e5733d54c';
-    var req = new Request(url);
-    var alerts = new Array();
-
-    fetch(req)
-      .then(res => res.json())
-      .then(res => res.articles)
-      .then(res => {
-        //    this.setState({articles: newAlerts})
-        //    console.log("state", this.state.articles);
-        this.setState({ articles: res })
-        //console.log(res)
-        // this.addAlerts(res)
-      });
-  }
-
   render() {
     return (
       <div >

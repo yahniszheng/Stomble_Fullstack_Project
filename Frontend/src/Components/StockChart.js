@@ -171,7 +171,7 @@ class StockChart extends React.PureComponent {
     const changeData = (data) => { this.setState({ data }) }
     Promise.all([
       GetCovid19Data(data => data),
-      GetStockPrices(stockDetails.map(el => el.code), (data => data), { "from": "2020-01-22" })
+      GetStockPrices(stockDetails.map(el => el.code), (data => data), { "from": "2020-03-22" })
     ])
       .then((result) => {
         const data = combineData(result);
