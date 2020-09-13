@@ -49,10 +49,10 @@ export default function Home(props) {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper elevation={3} className={classes.headerBackground}>
-            <h1>APInteresting</h1>
+            <h1>Yahnis's Stomble Project (Frontend Part)</h1>
             <article className={classes.headerIntroduction}>
-              Welcome to our application! We are aiming to provide data related to
-              diseases collected from multiple data sources for...
+              Welcome to my application! This site is aiming to provide data related to
+              diseases collected from multiple media sources for...
               <ul>
                 <li>Data Scientists</li>
                 <li>Medical Officers</li>
