@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from '../fbconfig'
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from "./Style/Card.js";
 import CardHeader from "./Style/CardHeader.js";
@@ -11,10 +10,6 @@ import HashtagGraph from './HashtagGraph'
 import Divider from '@material-ui/core/Divider';
 import { Paper, Box, Grid } from "@material-ui/core";
 import TwitterTag from './TwitterTag.js'
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-// Required for side-effects
-require("firebase/functions");
 const styles = ({
   root: {
     minWidth: 275,
@@ -33,8 +28,6 @@ const styles = ({
 });
 
 
-var functions = firebase.functions();
-
 class TwitterTrendsPage extends Component {
   state = {
     twitterPosts: [],
@@ -48,18 +41,6 @@ class TwitterTrendsPage extends Component {
     script.async = true;
 
     document.body.appendChild(script);
-  }
-
-  componentDidMount = () => {
-    var getTweets = firebase.functions().httpsCallable('getTweets')
-    trackPromise(
-      getTweets()
-        .then(res => {
-          console.log(res.data)
-          this.setState({ twitterPosts: res.data, isLoading: false })
-
-        })
-    )
   }
 
   LoadingIndicator = props => {
@@ -104,7 +85,7 @@ class TwitterTrendsPage extends Component {
         <Box my={2}>
           <div style={{ flexGrow: 1 }}>
             <Grid container spacing={3}>
-              <Grid item lg={8}>
+              <Grid item lg={12}>
                 <Card >
                   <CardHeader color="info">
                     <h2>Twitter Tag</h2>
@@ -122,35 +103,7 @@ class TwitterTrendsPage extends Component {
                   <HashtagGraph />
                 </Paper>
               </Grid>
-              <Grid item lg={4}>
-                <Card>
-                  <CardHeader color="info">
-                    <h2>Latest Tweets</h2>
-                  </CardHeader>
-                  <CardBody>
-                    {(this.state.twitterPosts).filter((key, i) => i < 8).map((item) => {
-                      return (
-                        <Card variant="outlined" style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
-                          <CardBody>
-                            <Typography className={classes.title} color="textSecondary" gutterBottom>
-                              {item.user['name']}
-                            </Typography>
-                            <Typography className={classes.pos} color="textSecondary">
-                              Retweeted: <b>{item.retweet_count} times</b>
-                            </Typography>
-
-                            <Typography variant="body2" component="p">
-                              {item.full_text}
-                              <br />
-                            </Typography>
-                          </CardBody>
-                        </Card>
-                      )
-                    })}
-                  </CardBody>
-                </Card>
-
-              </Grid>
+          
             </Grid>
           </div>
         </Box>
