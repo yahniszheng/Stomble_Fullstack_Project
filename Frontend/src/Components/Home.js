@@ -109,9 +109,6 @@ export default function Home(props) {
               <Button size="small" color="primary" href="/social-impacts/trends" className={classes.functionLinks}>
                 Google Trends
                 </Button>
-              <Button size="small" color="primary" href="/social-impacts/stocks" className={classes.functionLinks}>
-                Stock Market
-              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -133,11 +130,8 @@ export default function Home(props) {
             </CardContent>
             <Divider />
             <CardActions>
-              <Button size="small" color="primary" href="/alerts" className={classes.functionLinks}>
-                General
-              </Button>
               <Button size="small" color="primary" href="/cov19" className={classes.functionLinks}>
-                COV-19 Impact
+                COV-19 Statistics
               </Button>
             </CardActions>
           </Card>

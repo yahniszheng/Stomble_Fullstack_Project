@@ -3,13 +3,9 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from "./Style/Card.js";
 import CardHeader from "./Style/CardHeader.js";
 import CardBody from "./Style/CardBody.js";
-import Typography from '@material-ui/core/Typography';
 import { usePromiseTracker, trackPromise } from 'react-promise-tracker'
 import Loader from 'react-loader-spinner'
-import HashtagGraph from './HashtagGraph'
-import Divider from '@material-ui/core/Divider';
 import { Paper, Box, Grid } from "@material-ui/core";
-import TwitterTag from './TwitterTag.js'
 const styles = ({
   root: {
     minWidth: 275,
@@ -60,7 +56,6 @@ class TwitterTrendsPage extends Component {
     const { classes } = this.props
     return (
       <div>
-        <div>
         <Card>
         <CardHeader color="info">
           <h2>Twitter Trends</h2>
@@ -78,37 +73,6 @@ class TwitterTrendsPage extends Component {
         </Box>
         </CardBody >
         </Card>
-        </div>
-
-        <Box my={2}>
-        </Box>
-        <Box my={2}>
-          <div style={{ flexGrow: 1 }}>
-            <Grid container spacing={3}>
-              <Grid item lg={12}>
-                <Card >
-                  <CardHeader color="info">
-                    <h2>Twitter Tag</h2>
-                  </CardHeader>
-                  <CardBody>
-                    <Box my={1}>
-                      <Box p={3}>
-                        <TwitterTag />
-                      </Box>
-                    </Box>
-                  </CardBody>
-                </Card>
-
-                <Paper elevation={3}>
-                  <HashtagGraph />
-                </Paper>
-              </Grid>
-          
-            </Grid>
-          </div>
-        </Box>
-
-
       </div >);
   }
 }

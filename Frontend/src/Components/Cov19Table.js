@@ -270,7 +270,7 @@ export default class Cov19Table extends React.Component {
   }
 
   exportAsCsv(json) {
-    // From https://stackoverflow.com/questions/8847766/how-to-convert-json-to-csv-format-and-store-in-a-variable
+
     var fields = Object.keys(json[0])
     var replacer = function (key, value) { return value === null ? '' : value }
     var csv = json.map(function (row) {

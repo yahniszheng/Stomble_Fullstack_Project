@@ -6,42 +6,16 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 export default class PieChart extends React.Component {
   constructor(){
     super()
-    this.state = {ranking:{}}
-    this.OnPageLoad = this.OnPageLoad.bind()
+    this.state = {
+      ranking: [{y:108, label:'Covid-19'},
+       {y:42, label:'Flu'},
+       {y:12, label:'Dengue'},
+       {y:10, label:'Measles'},
+       {y:28, label:'Sars'},
+       {y:22, label:'Pneumonia'},
+      ]
+    }
   }
-
-  componentDidMount(){
-    this.OnPageLoad()
-  }
-
-  OnPageLoad = async ()=>{
-    var url = `https://apinteresting.xyz/v1/diseases`;
-    var rank = await fetch(url, {
-      method: "GET",
-      headers: { identity: "header" }
-    })
-      .then(res => {
-        // console.log(res.json());
-        return res.json();
-      })
-      .then(res => {
-        // // console.log(Array(res.data));
-        // const result = Object.entries(rank).map(function(key, value){
-        //   return {y:value, label:key}
-        // })
-        // console.log(res)
-        return res.data;
-      }).then(data =>{
-        var lists = []
-        for (var [key, value] of Object.entries(data)){
-          lists.push({y:value, label:key})
-        }
-        return lists
-      });
-    // console.log(rank.keys())
-    this.setState({ranking: rank})
-  }
-
 
 	render() {
 		const options = {

@@ -73,7 +73,6 @@ export default function Sidebar() {
             }}
             anchor="left"
         >
-            <Toolbar></Toolbar>
             <List>
 
                 <Link to="/" className={classes.sideNavText}>
@@ -110,20 +109,8 @@ export default function Sidebar() {
                         <ListItemText>Google Trends</ListItemText>
                     </ListItem>
                 </Link>
-                <Link to="/social-impacts/stocks" className={classes.sideNavText}>
-                    <ListItem button>
-                        <ListItemIcon><TrendingDownIcon /></ListItemIcon>
-                        <ListItemText>Stock Market</ListItemText>
-                    </ListItem>
-                </Link>
                 <Divider />
                 <ListItem disabled >Statistics</ListItem>
-                <Link to="/alerts" className={classes.sideNavText}>
-                    <ListItem button>
-                        <ListItemIcon><InsertChartIcon /></ListItemIcon>
-                        <ListItemText>Outbreak Statistics</ListItemText>
-                    </ListItem>
-                </Link>
                 <Link to="/cov19" className={classes.sideNavText}>
                     <ListItem button>
                         <ListItemIcon><WarningIcon /></ListItemIcon>

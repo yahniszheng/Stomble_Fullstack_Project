@@ -19,8 +19,8 @@ export default class ArticleSearchToolbar extends React.Component {
     super();
 
     this.state = {
-      start_date: "2020-03-03T12:00",
-      end_date: "2020-03-03T13:00",
+      start_date: "2020-01-01T12:00",
+      end_date: "2020-09-15T13:00",
       location: "",
       keyword: "",
     };
