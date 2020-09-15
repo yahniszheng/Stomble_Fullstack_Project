@@ -11,35 +11,15 @@ import ArticleReport from './ArticleReport'
 
 
 export default class ArticleDialog extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       open: false,
       scroll: 'paper',
-      report: {
-        url: 'Loading...'
-      }
+      report: props.article
     }
     this.onBoxOpen = this.onBoxOpen.bind(this);
     this.onBoxClose = this.onBoxClose.bind(this);
-  }
-
-  GetReport = async () => {
-    const url = `https://apinteresting.xyz/v1/news/${this.props.article.id}`
-    const res = await fetch(url, {
-      method: "GET",
-      headers: { identity: "header" }
-    })
-      .then(res => {
-        // console.log(res.json());
-        return res.json();
-      })
-      .then(res => {
-        // console.log(res.data);
-        return res.data;
-      });
-    console.log(res);
-    this.setState({ report: res });
   }
 
   exportAsJson(json) {
@@ -53,7 +33,6 @@ export default class ArticleDialog extends React.Component {
   }
 
   onBoxOpen() {
-    this.GetReport();
     this.setState({ open: true, scroll: 'paper' });
   }
 
@@ -95,7 +74,7 @@ export default class ArticleDialog extends React.Component {
               ref={this.state.descriptionElementRef}
               tabIndex={-1}
             >
-              <div hidden={!this.state.report.reports}>
+              <div>
                 <Alert severity="success">
                   We found {(this.state.report.reports) ? this.state.report.reports.length : "0"} reports for this article.
                   <Link href={this.state.report.url} target="_blank">View the article</Link>
@@ -103,10 +82,6 @@ export default class ArticleDialog extends React.Component {
                 <br />
                 {this.renderReports(this.state.report.reports)}
               </div>
-              <div hidden={this.state.report.reports !== undefined}>
-                <Alert severity="info">Loading...</Alert>
-              </div>
-
             </DialogContentText>
           </DialogContent>
           <DialogActions>

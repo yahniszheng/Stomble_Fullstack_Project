@@ -4,7 +4,7 @@ import { Alert, AlertTitle } from '@material-ui/lab';
 import Card from "./Style/Card.js";
 import CardHeader from "./Style/CardHeader.js";
 import CardBody from "./Style/CardBody.js";
-
+import { ApolloClient, InMemoryCache, gql} from '@apollo/client';
 import ArticleSearchToolbar from "./ArticleSearchToolbar";
 import ArticleList from "./ArticleList";
 
@@ -15,7 +15,11 @@ class ArticleListPage extends React.Component {
 
     this.state = {
       articles: [],
-      valid_search: true
+      valid_search: true,
+      client: new ApolloClient({
+        uri: 'https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql',
+        cache: new InMemoryCache()
+      })
     };
 
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
@@ -23,21 +27,60 @@ class ArticleListPage extends React.Component {
   }
 
   initValue = async () => {
-    const url =
-      "https://apinteresting.xyz/v1/news?start_date=2020-03-03T12%3A56%3A00&end_date=2020-03-03T12%3A57%3A00&keyterms=coronavirus%2Cflu&location=China";
-    const lists = await fetch(url, {
-      method: "GET",
-      headers: { identity: "header" }
-    })
-      .then(res => {
-        // console.log(res.json());
-        return res.json();
+    // const url =
+    //   "https://apinteresting.xyz/v1/news?start_date=2020-03-03T12%3A56%3A00&end_date=2020-03-03T12%3A57%3A00&keyterms=coronavirus%2Cflu&location=China";
+    // const lists = await fetch(url, {
+    //   method: "GET",
+    //   headers: { identity: "header" }
+    // })
+    //   .then(res => {
+    //     // console.log(res.json());
+    //     return res.json();
+    //   })
+    //   .then(res => {
+    //     // console.log(Array(res.data));
+    //     return res.data;
+    //   });
+
+      const client = new ApolloClient({
+        uri: 'https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql',
+        cache: new InMemoryCache()
+      })
+
+      const lists = await client
+      .query({
+        query: gql`
+          query {
+            data (location_filter : "china",  keyword : "coronavirus") {
+              url
+              date_of_publication
+              headline
+              main_text
+              reports {
+                event_date
+                locations {
+                  google_id
+                  address
+                }
+                diseases
+                syndromes
+              }
+              keyword_location
+              keyword_list
+              keyword_frequency {
+                name
+                freqency
+              }
+            }
+          }
+        `
       })
       .then(res => {
-        // console.log(Array(res.data));
-        return res.data;
+
+        return res.data.data;
       });
 
+    console.log(lists);
     this.setState({ articles: lists, valid_search: true });
   };
 

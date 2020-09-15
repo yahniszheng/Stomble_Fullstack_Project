@@ -12,18 +12,20 @@ class ArticleList extends React.Component {
   }
 
   render() {
-    const articles = this.props.articles.map(function (data) {
+    const articles = this.props.articles.slice().sort((a,b) => parseInt(a.date_of_publication) < parseInt(b.date_of_publication) ? 1 : -1).map(function (data) {
+      console.log(data);
+      let d = new Date(parseInt(data.date_of_publication + "000"));
       return (
-        <Box mb={1} key={data.id}>
+        <Box mb={1} key={data.headline}>
           <Card>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 {data.headline}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {data.date_of_publication}
+                {d.getHours() + ":" + d.getMinutes() + "  " + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear()}
                 <br />
-                {data.main_text}
+                {data.main_text.substring(0, 800) + "..."}
               </Typography>
             </CardContent>
             <Divider />
