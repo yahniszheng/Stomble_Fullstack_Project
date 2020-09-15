@@ -26,6 +26,6 @@ Workflow:
 
 Backend phase done. MongoDb is hosted on Atlas cloud platform.
 
-GraphQL API done. Hosted on AWS lambda, https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql
+GraphQL API done. Hosted on AWS lambda, https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql. YOU MUST COPY THIS URL INTO YOUR BRWOSER INSTEAD OF CLICKING TO ACCESS!!! (somthing weird)
 
 Front-end done. Hosted on AWS Amplify, https://master.d878kgloy5vbu.amplifyapp.com/
