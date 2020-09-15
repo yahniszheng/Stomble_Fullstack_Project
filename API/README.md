@@ -4,48 +4,48 @@ GraphQL API will act like a public interface, accepting queries from public and 
   https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql YOU MUST COPY THIS URL INTO YOUR BRWOSER INSTEAD OF CLICKING TO ACCESS!!! (somthing weird)
 
 ## sample queue without filter:
-query{\n
-  data {\n
-    url\n
-    date_of_publication\n
-    main_text\n
-    keyword_location\n
-    keyword_list\n
-    keyword_frequency {\n
-      name\n
-      freqency\n
-    }\n
-    reports{\n
-      event_date\n
-      locations {\n
-        address\n
-      }\n
-      diseases\n
-      syndromes\n
-    }\n
-  }\n
-}\n
+query{\
+  data {\
+    url\
+    date_of_publication\
+    main_text\
+    keyword_location\
+    keyword_list\
+    keyword_frequency {\
+      name\
+      freqency\
+    }\
+    reports{\
+      event_date\
+      locations {\
+        address\
+      }\
+      diseases\
+      syndromes\
+    }\
+  }\
+}\
 
 ## sample queue with filter:
-query{
-  data (start_data: 1388757596, end_date : 1600000000, location_filter : "sydney", keyword : "coronavirus") {
-    url
-    date_of_publication
-    main_text
-    keyword_location
-    keyword_list
-    keyword_frequency {
-      name
-      freqency
-    }
-    reports{
-      event_date
-      locations {
-        address
-      }
-      diseases
-      syndromes
-    }
-  }
-}
+query{\
+  data (start_data: 1388757596, end_date : 1600000000, location_filter : "sydney", keyword : "coronavirus") {\
+    url\
+    date_of_publication\
+    main_text\
+    keyword_location\
+    keyword_list\
+    keyword_frequency {\
+      name\
+      freqency\
+    }\
+    reports{\
+      event_date\
+      locations {\
+        address\
+      }\
+      diseases\
+      syndromes\
+    }\
+  }\
+}\
 
