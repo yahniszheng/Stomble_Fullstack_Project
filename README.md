@@ -23,6 +23,9 @@ Workflow:
     In Front-end phase, Web application will fetch data from API and use react framework, material UI to represent them in a intuitive way.
     
 ## Progess:
+
 Backend phase done. MongoDb is hosted on Atlas cloud platform.
+
 GraphQL API done. Hosted on AWS lambda, https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql
+
 Front-end done. Hosted on AWS Amplify, https://master.d878kgloy5vbu.amplifyapp.com/
