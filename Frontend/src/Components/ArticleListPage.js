@@ -1,5 +1,6 @@
 import React from "react";
 import Loader from 'react-loader-spinner'
+import { connect } from 'react-redux';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import {Grid } from '@material-ui/core';
 import Card from "./Style/Card.js";
@@ -9,13 +10,17 @@ import { ApolloClient, InMemoryCache, gql} from '@apollo/client';
 import ArticleSearchToolbar from "./ArticleSearchToolbar";
 import ArticleList from "./ArticleList";
 
+const mapState = (state) => {
+  return {
+    articles: state.articles
+  };
+}
 
 class ArticleListPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      articles: [],
       valid_search: true,
       client: new ApolloClient({
         uri: 'https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql',
@@ -67,7 +72,8 @@ class ArticleListPage extends React.Component {
 
         return res.data.data;
       });
-    this.setState({ articles: lists, valid_search: true, loading: false });
+    this.props.dispatch({ type: "UPDATE", articles : lists});
+    this.setState({ valid_search: true, loading: false });
   };
 
   componentDidMount() {
@@ -117,10 +123,9 @@ class ArticleListPage extends React.Component {
 
       return res.data.data;
     });
-
     if (Array.isArray(lists) == true && lists.length > 0) {
-      // console.log(lists);
-      this.setState({ articles: lists, valid_search: true, loading: false });
+      this.props.dispatch({ type: "UPDATE", articles : lists});
+      this.setState({ valid_search: true, loading: false });
     } else {
       this.setState({ valid_search: false, loading: false });
     }
@@ -130,7 +135,7 @@ class ArticleListPage extends React.Component {
     const validSearch = this.state.valid_search;
     let content;
     if (validSearch && !this.state.loading) {
-      content = <ArticleList articles={this.state.articles} />;
+      content = <ArticleList />;
     } else if (!validSearch) {
       content = (
         <Alert severity="error">
@@ -169,4 +174,4 @@ class ArticleListPage extends React.Component {
   }
 }
 
-export default ArticleListPage;
+export default connect(mapState)(ArticleListPage);

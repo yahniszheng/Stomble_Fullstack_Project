@@ -2,7 +2,7 @@ import ScriptTag from "react-script-tag";
 import React, { Component } from "react";
 
 export default class TrendQuestionCov19 extends Component {
-  constructor(props) {
+  constructor() {
     super();
   }
 

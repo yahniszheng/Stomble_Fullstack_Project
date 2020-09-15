@@ -7,9 +7,6 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { AutoSizer, Column, Table } from "react-virtualized";
-import Card from "./Style/Card.js";
-import CardHeader from "./Style/CardHeader.js";
-import CardBody from "./Style/CardBody.js";
 import ReactLoading from 'react-loading';
 
 const styles = theme => ({
@@ -270,7 +267,6 @@ export default class Cov19Table extends React.Component {
   }
 
   exportAsCsv(json) {
-
     var fields = Object.keys(json[0])
     var replacer = function (key, value) { return value === null ? '' : value }
     var csv = json.map(function (row) {

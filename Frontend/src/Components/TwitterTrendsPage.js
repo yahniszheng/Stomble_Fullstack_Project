@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Card from "./Style/Card.js";
 import CardHeader from "./Style/CardHeader.js";
 import CardBody from "./Style/CardBody.js";
-import { usePromiseTracker, trackPromise } from 'react-promise-tracker'
+import { usePromiseTracker } from 'react-promise-tracker'
 import Loader from 'react-loader-spinner'
-import { Paper, Box, Grid } from "@material-ui/core";
+import { Paper, Box } from "@material-ui/core";
 const styles = ({
   root: {
     minWidth: 275,
@@ -53,7 +53,6 @@ class TwitterTrendsPage extends Component {
 
 
   render() {
-    const { classes } = this.props
     return (
       <div>
         <Card>

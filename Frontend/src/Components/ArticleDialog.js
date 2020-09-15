@@ -6,7 +6,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Alert } from '@material-ui/lab';
-import { Link, Divider } from '@material-ui/core';
 import ArticleReport from './ArticleReport'
 
 
@@ -77,7 +76,6 @@ export default class ArticleDialog extends React.Component {
               <div>
                 <Alert severity="success">
                   We found {(this.state.report.reports) ? this.state.report.reports.length : "0"} reports for this article.
-                  <Link href={this.state.report.url} target="_blank">View the article</Link>
                 </Alert>
                 <br />
                 {this.renderReports(this.state.report.reports)}

@@ -4,7 +4,14 @@ import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ArticleDialog from './ArticleDialog';
+import { connect } from 'react-redux';
 import { Card, CardContent, Typography, CardActions } from '@material-ui/core';
+
+const mapState = (state) => {
+  return {
+    articles: state.articles
+  };
+}
 
 class ArticleList extends React.Component {
   constructor() {
@@ -49,5 +56,4 @@ class ArticleList extends React.Component {
   }
 }
 
-
-export default ArticleList;
+export default connect(mapState)(ArticleList);
