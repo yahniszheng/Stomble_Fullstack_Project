@@ -1,7 +1,7 @@
 ## API Phase
 
 GraphQL API will act like a public interface, accepting queries from public and fetch data from mongoDb hosted on mongo cloud. Currently API is hosted on AWS. Access from
-https://z0g6mpfqoa.execute-api.ap-southeast-2.amazonaws.com/beta/graphql
+https://zzlu54fd84.execute-api.ap-southeast-2.amazonaws.com/dev/graphql
 
 ## sample queue without filter:
 query{
