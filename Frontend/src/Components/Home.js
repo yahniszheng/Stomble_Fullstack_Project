@@ -79,10 +79,13 @@ export default function Home(props) {
                 </Typography>
             </CardContent>
             <Divider />
-            <CardActionArea href="/article-list">
+            <CardActionArea>
               <CardActions>
-                <Button size="small" color="primary" className={classes.functionLinks}>
-                  Enter
+                <Button size="small" href="/article-list" color="primary" className={classes.functionLinks}>
+                  Article List
+                </Button>
+                <Button size="small" href="/article-storage" color="primary" className={classes.functionLinks}>
+                  Article Storage
                 </Button>
               </CardActions>
             </CardActionArea>
@@ -98,17 +101,19 @@ export default function Home(props) {
 
               <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
                 Diseases can sometimes impactful to the world. Public are searching for diseases.
-                Stock markets are trading...
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
-                We tried to integrate as much as data that may imply those impacts on the diseases.
+                I tried to integrate as much as data that may imply those impacts on the diseases.
               </Typography>
             </CardContent>
             <Divider />
             <CardActions>
               <Button size="small" color="primary" href="/social-impacts/trends" className={classes.functionLinks}>
                 Google Trends
-                </Button>
+              </Button>
+              <Button size="small" color="primary" href="/social-impacts/twitter-trends" className={classes.functionLinks}>
+                Twitter Trends
+              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -124,7 +129,7 @@ export default function Home(props) {
                 Data, data, data! Numbers are changing and they are telling stoies.
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p" className={classes.description}>
-                We provides raw data or visualized data. Take whatever you need for further analysing,
+                We provides raw data or visualized data about Covid-19. Take whatever you need for further analysing,
                 or even just for your interested.
               </Typography>
             </CardContent>
