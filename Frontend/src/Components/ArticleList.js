@@ -20,7 +20,6 @@ class ArticleList extends React.Component {
 
   render() {
     const articles = this.props.articles.slice().sort((a,b) => parseInt(a.date_of_publication) < parseInt(b.date_of_publication) ? 1 : -1).map(function (data) {
-      console.log(data);
       let d = new Date(parseInt(data.date_of_publication + "000"));
       return (
         <Box mb={1} key={data.headline}>

@@ -59,7 +59,7 @@
     "GraphqlLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/apollo-lambda-dev-graphql"
+        "LogGroupName": "/aws/lambda/apollo-lambda-beta-graphql"
       }
     },
     "IamRoleLambdaExecution": {
@@ -88,7 +88,7 @@
                 "-",
                 [
                   "apollo-lambda",
-                  "dev",
+                  "beta",
                   "lambda"
                 ]
               ]
@@ -104,7 +104,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/apollo-lambda-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/apollo-lambda-beta*:*"
                     }
                   ]
                 },
@@ -115,7 +115,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/apollo-lambda-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/apollo-lambda-beta*:*:*"
                     }
                   ]
                 }
@@ -129,7 +129,7 @@
             "-",
             [
               "apollo-lambda",
-              "dev",
+              "beta",
               {
                 "Ref": "AWS::Region"
               },
@@ -146,9 +146,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/apollo-lambda/dev/1599984411073-2020-09-13T08:06:51.073Z/apollo-lambda.zip"
+          "S3Key": "serverless/apollo-lambda/beta/1600067372190-2020-09-14T07:09:32.190Z/apollo-lambda.zip"
         },
-        "FunctionName": "apollo-lambda-dev-graphql",
+        "FunctionName": "apollo-lambda-beta-graphql",
         "Handler": "graphql.graphqlHandler",
         "MemorySize": 1024,
         "Role": {
@@ -164,20 +164,20 @@
         "GraphqlLogGroup"
       ]
     },
-    "GraphqlLambdaVersionInXOqCASx72MaJHK2JXqIwYchLXrOTlestRbMdVzI": {
+    "GraphqlLambdaVersion10VR2BWrV6Vp7U0ckOUV3Rq0nWzsYtZ0rdPuXMA4uJE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "omPpcyEUdU3+KekyHGl5uEbkwlSMy9KKvYyQVphLXhc="
+        "CodeSha256": "MMtdWRiHw8RoGv0xpgWgD1pkBzeauDIf0mRboWUBZlE="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-apollo-lambda",
+        "Name": "beta-apollo-lambda",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -332,13 +332,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1599984406292": {
+    "ApiGatewayDeployment1600067367022": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         },
-        "StageName": "dev"
+        "StageName": "beta"
       },
       "DependsOn": [
         "ApiGatewayMethodGraphqlOptions",
@@ -393,7 +393,7 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionInXOqCASx72MaJHK2JXqIwYchLXrOTlestRbMdVzI"
+        "Ref": "GraphqlLambdaVersion10VR2BWrV6Vp7U0ckOUV3Rq0nWzsYtZ0rdPuXMA4uJE"
       }
     },
     "ServiceEndpoint": {
@@ -414,7 +414,7 @@
             {
               "Ref": "AWS::URLSuffix"
             },
-            "/dev"
+            "/beta"
           ]
         ]
       }
