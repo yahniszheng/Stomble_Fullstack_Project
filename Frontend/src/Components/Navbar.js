@@ -31,7 +31,7 @@ export default function Sidebar(props) {
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
                 <Typography variant="h6" noWrap>
-                    Yahnis's Stomble Project
+                    Yahnis's Demo Project
                 </Typography>
             </Toolbar>
         </AppBar>

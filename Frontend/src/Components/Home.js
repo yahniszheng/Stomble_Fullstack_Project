@@ -49,7 +49,7 @@ export default function Home(props) {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper elevation={3} className={classes.headerBackground}>
-            <h1>Yahnis's Stomble Project (Frontend Part)</h1>
+            <h1>Disease tracker</h1>
             <article className={classes.headerIntroduction}>
               Welcome to my application! This site is aiming to provide data related to
               diseases collected from multiple media sources for...
